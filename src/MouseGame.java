@@ -4,25 +4,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MouseGame extends JInternalFrame {
     private Container cp;
-    private JLabel jlb=new JLabel();
     private Timer t1,t2;
-    private ImageIcon icon=new ImageIcon("mon.png");
-    private ImageIcon icon2=new ImageIcon("explostion.png");
+    private ImageIcon icon=new ImageIcon("Mon.png");
+    private ImageIcon icon2=new ImageIcon("explosion.png");
     private JLabel score=new JLabel("分數:");
+    private JLabel jlb=new JLabel();
     private JLabel num=new JLabel("0");
     private JButton start=new JButton("Start");
     private JButton exit=new JButton("Exit");
-    private JButton add=new JButton("Add Object");
+    private JButton jadd=new JButton("Add Object");
     private JPanel jpnN=new JPanel(new GridLayout(1,4,3,3));
     private JPanel jpnS=new JPanel(new GridLayout(1,1,3,3));
     private JPanel jpnC=new JPanel();
     private Random rand=new Random();
     private int labX=0;
     private int labY=0;
+//    private ArrayList<Gopher> arrayList=new ArrayList<Gopher>();
 
     public MouseGame(String title) {
         super(title, true, true, true, true);
@@ -73,17 +75,31 @@ public class MouseGame extends JInternalFrame {
 
 
         });
-        t1=new Timer(500, new ActionListener() {
+        t1=new Timer(700, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-             labX=rand.nextInt(MouseGame.this.getHeight()-10) ;
-             labY=rand.nextInt(MouseGame.this.getWidth()-10) ;
-             jlb.setLocation(labX,labY);
+                labX=rand.nextInt(MouseGame.this.getHeight()-5) ;
+                labY=rand.nextInt(MouseGame.this.getWidth()-5) ;
+                jlb.setLocation(labX,labY);
+            }
+        });
+        t2=new Timer(500, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        jadd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
 
 
         cp.setLayout(new BorderLayout(3,3));
+        jpnC.setLayout(null);
         cp.add(jpnN,BorderLayout.NORTH);
         cp.add(jpnS,BorderLayout.SOUTH);
         cp.add(jpnC,BorderLayout.CENTER);
@@ -93,7 +109,7 @@ public class MouseGame extends JInternalFrame {
         jpnN.add(exit);
         jpnC.add(jlb);
 
-        jpnS.add(add);
+        jpnS.add(jadd);
 
         cp.add(jlb);
 

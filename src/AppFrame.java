@@ -30,7 +30,7 @@ public class AppFrame extends JFrame {
     }
     private void init(){
         cp=this.getContentPane();
-        this.setSize(500,500);
+        this.setSize(650,500);
         this.setDefaultCloseOperation(Window.EXIT_ON_CLOSE);
         this.setJMenuBar(jmbar);
         jmbar.add(jmFile);
